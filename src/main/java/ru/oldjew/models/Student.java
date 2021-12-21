@@ -8,7 +8,7 @@ public class Student {
     private float avgExamScore;
     private String contactPhone;
 
-    public Student(Builder builder) {
+    private Student(Builder builder) {
         this.fullName = builder.fullName;
         this.universityId = builder.universityId;
         this.currentCourseNumber = builder.currentCourseNumber;
