@@ -14,6 +14,7 @@ public class University {
         this.yearOfFoundation = builder.yearOfFoundation;
         this.shortName = builder.shortName;
         this.mainProfile = builder.mainProfile;
+
     }
 
     public String getId() {

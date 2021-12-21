@@ -1,12 +1,14 @@
 package ru.oldjew.models;
 
 public enum StudyProfile {
-    MATH("Математика"),
+    MATHEMATICS("Математика"),
     COMPUTER_SCIENCE("Информатика"),
     ENGLISH("Английский язык"),
     PHYSICS("Физика"),
     MEDICINE("Медицина"),
-    PHYSICAL_CULTURE("Физкультура");
+    PHYSICAL_CULTURE("Физкультура"),
+    LINGUISTICS("Лингвистика");
+
     private final String profileName;
 
     StudyProfile(String profileName) {
