@@ -1,4 +1,4 @@
-package ru.oldjew.models;
+package ru.oldjew.enums;
 
 public enum StudyProfile {
     MATHEMATICS("Математика"),

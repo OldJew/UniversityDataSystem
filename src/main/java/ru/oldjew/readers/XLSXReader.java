@@ -4,7 +4,7 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import ru.oldjew.models.Student;
-import ru.oldjew.models.StudyProfile;
+import ru.oldjew.enums.StudyProfile;
 import ru.oldjew.models.University;
 
 import java.io.FileInputStream;

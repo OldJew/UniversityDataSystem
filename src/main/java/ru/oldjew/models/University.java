@@ -1,5 +1,7 @@
 package ru.oldjew.models;
 
+import ru.oldjew.enums.StudyProfile;
+
 public class University {
 
     private String id;
