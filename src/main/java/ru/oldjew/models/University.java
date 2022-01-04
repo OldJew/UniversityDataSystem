@@ -1,13 +1,19 @@
 package ru.oldjew.models;
 
+import com.google.gson.annotations.SerializedName;
 import ru.oldjew.enums.StudyProfile;
 
 public class University {
 
+    @SerializedName("universityId")
     private String id;
+    @SerializedName("universityName")
     private String fullName;
+    @SerializedName("yearOfFoundation")
     private int yearOfFoundation;
+    @SerializedName("universityShortName")
     private String shortName;
+    @SerializedName("profile")
     private StudyProfile mainProfile;
 
     private University(Builder builder) {
