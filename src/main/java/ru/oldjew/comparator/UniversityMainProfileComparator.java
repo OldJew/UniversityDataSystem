@@ -12,7 +12,7 @@ public class UniversityMainProfileComparator implements UniversityComparator{
         if (o2.getMainProfile() == null){
             return -1;
         }
-        return StringUtils.compare(o1.getMainProfile(), o2.getMainProfile());
+        return StringUtils.compare(o1.getMainProfile().name(), o2.getMainProfile().name());
 
     }
 }

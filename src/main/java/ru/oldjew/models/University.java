@@ -41,11 +41,12 @@ public class University {
         return yearOfFoundation;
     }
 
-    public String getMainProfile() {
-        if (mainProfile != null){
-            return mainProfile.getProfileName();
-        }
-        else return "Undefined";
+    public StudyProfile getMainProfile() {
+//        if (mainProfile != null){
+//            return mainProfile.getProfileName();
+//        }
+//        else return "Undefined";
+        return mainProfile;
     }
 
     @Override

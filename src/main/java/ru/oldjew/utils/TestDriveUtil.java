@@ -4,9 +4,11 @@ import ru.oldjew.comparator.StudentComparator;
 import ru.oldjew.comparator.UniversityComparator;
 import ru.oldjew.enums.StudentEnumComparators;
 import ru.oldjew.enums.UniversityEnumComparators;
+import ru.oldjew.models.Statistics;
 import ru.oldjew.models.Student;
 import ru.oldjew.models.University;
 import ru.oldjew.readers.XLSXReader;
+import ru.oldjew.writers.XLSWriter;
 
 import java.util.List;
 
@@ -43,6 +45,10 @@ public class TestDriveUtil {
             University universityFromJson = JsonUtils.jsonToUniversity(json);
             System.out.println(universityFromJson);
         });
+
+        List<Statistics> statistics = StatisticWorkerUtil.collectionToStatistic(students, universities);
+        XLSWriter.generateTable(statistics, "D:\\WorkSpace\\MyDocs\\stat.xlsx");
+
 
     }
 }
