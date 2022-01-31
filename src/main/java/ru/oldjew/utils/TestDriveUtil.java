@@ -1,23 +1,54 @@
 package ru.oldjew.utils;
 
+import ru.oldjew.comparator.StudentComparator;
+import ru.oldjew.comparator.UniversityComparator;
+import ru.oldjew.enums.StudentEnumComparators;
+import ru.oldjew.enums.UniversityEnumComparators;
+import ru.oldjew.models.Statistics;
 import ru.oldjew.models.Student;
-import ru.oldjew.models.StudyProfile;
 import ru.oldjew.models.University;
+import ru.oldjew.readers.XLSXReader;
+import ru.oldjew.writers.XLSWriter;
+
+import java.util.List;
 
 public class TestDriveUtil {
 
     public static void main(String[] args) {
-        Student student = new Student.Builder("Andrew", "10",10).build();
-        Student student1 = new Student.Builder("Tester", "11",11).setAvgExamScore(10)
-        .setContactPhone("88005553535").build();
-        University university = new University.Builder("10", "National university of testers", 1970).build();
-        University university1 = new University.Builder("11", "\n" +
-                "Moscow Institute of Steel and Alloys", 1970)
-                .setShortName("MUoSaA").setMainProfile(StudyProfile.PHYSICS).build();
-        System.out.println(student);
-        System.out.println(student1);
-        System.out.println(university);
-        System.out.println(university1);
+
+        List<Student> students
+                = XLSXReader.readXlsStudent("src/main/resources/universityInfo.xlsx");
+        StudentComparator studentExamScoreComparator = ComparatorUtil.getStudentComparator(StudentEnumComparators.EXAM_SCORE);
+        List<University> universities=
+                XLSXReader.readXlsUniversities("src/main/resources/universityInfo.xlsx");
+        UniversityComparator universityShortNameComparator = ComparatorUtil.getUniversityComparator(UniversityEnumComparators.SHORT_NAME);
+
+        String studentsJson = JsonUtils.studentListToJson(students);
+        String universitiesJson = JsonUtils.universityListToJson(universities);
+
+        List<Student> studentListFromJson = JsonUtils.jsonToStudentList(studentsJson);
+        List<University> universityListFromJson = JsonUtils.jsonToUniversityList(universitiesJson);
+
+        System.out.println("Old: " +students.size() + "\nFrom JSON: " + studentListFromJson.size());
+        System.out.println("Old: " +universities.size() + "\nFrom JSON: " + universityListFromJson.size());
+
+        students.stream().forEach(student -> {
+            String json = JsonUtils.studentToJson(student);
+            System.out.println(json);
+            Student studentFromJson = JsonUtils.jsonToStudent(json);
+            System.out.println(studentFromJson);
+        });
+
+        universities.stream().forEach(university -> {
+            String json = JsonUtils.universityToJson(university);
+            System.out.println(json);
+            University universityFromJson = JsonUtils.jsonToUniversity(json);
+            System.out.println(universityFromJson);
+        });
+
+        List<Statistics> statistics = StatisticWorkerUtil.collectionToStatistic(students, universities);
+        XLSWriter.generateTable(statistics, "D:\\WorkSpace\\MyDocs\\stat.xlsx");
+
 
     }
 }

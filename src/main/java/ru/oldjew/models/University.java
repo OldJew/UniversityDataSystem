@@ -1,11 +1,19 @@
 package ru.oldjew.models;
 
+import com.google.gson.annotations.SerializedName;
+import ru.oldjew.enums.StudyProfile;
+
 public class University {
 
+    @SerializedName("universityId")
     private String id;
+    @SerializedName("universityName")
     private String fullName;
+    @SerializedName("yearOfFoundation")
     private int yearOfFoundation;
+    @SerializedName("universityShortName")
     private String shortName;
+    @SerializedName("profile")
     private StudyProfile mainProfile;
 
     private University(Builder builder) {
@@ -14,6 +22,7 @@ public class University {
         this.yearOfFoundation = builder.yearOfFoundation;
         this.shortName = builder.shortName;
         this.mainProfile = builder.mainProfile;
+
     }
 
     public String getId() {
@@ -32,11 +41,12 @@ public class University {
         return yearOfFoundation;
     }
 
-    public String getMainProfile() {
-        if (mainProfile != null){
-            return mainProfile.getProfileName();
-        }
-        else return "Undefined";
+    public StudyProfile getMainProfile() {
+//        if (mainProfile != null){
+//            return mainProfile.getProfileName();
+//        }
+//        else return "Undefined";
+        return mainProfile;
     }
 
     @Override
