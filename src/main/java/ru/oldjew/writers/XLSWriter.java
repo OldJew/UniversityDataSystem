@@ -8,11 +8,13 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
+import java.util.logging.Logger;
 
 public class XLSWriter {
+    private static final Logger logger = Logger.getLogger(XLSWriter.class.getName());
 
     public static void generateTable(List<Statistics> statistics, String path) {
-
+        logger.info("Writer started");
         Workbook workbook = new XSSFWorkbook();
         Sheet sheet = workbook.createSheet("Statistic");
         //Creating sheet style
@@ -55,11 +57,11 @@ public class XLSWriter {
         try (FileOutputStream fos = new FileOutputStream(path)) {
             workbook.write(fos);
         } catch (FileNotFoundException e) {
-            System.out.println("Cannot find file");
+            logger.severe("Cannot find file");
         } catch (IOException e) {
-            System.out.println("IOException");
+            logger.severe("IOException");
         }
-
+        logger.info("Writer finished");
     }
 
     private static void createHeaderCell(Cell cell, String cellValue, CellStyle cellStyle) {
