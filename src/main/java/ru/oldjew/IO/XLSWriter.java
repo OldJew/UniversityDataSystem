@@ -1,4 +1,4 @@
-package ru.oldjew.writers;
+package ru.oldjew.IO;
 
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;

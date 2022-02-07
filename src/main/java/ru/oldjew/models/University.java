@@ -3,17 +3,29 @@ package ru.oldjew.models;
 import com.google.gson.annotations.SerializedName;
 import ru.oldjew.enums.StudyProfile;
 
+import jakarta.xml.bind.annotation.*;
+
+@XmlAccessorType(XmlAccessType.FIELD)
 public class University {
 
     @SerializedName("universityId")
+    @XmlElement(name = "universityId")
     private String id;
+
     @SerializedName("universityName")
+    @XmlElement(name = "universityName")
     private String fullName;
+
     @SerializedName("yearOfFoundation")
+    @XmlElement(name = "yearOfFoundation")
     private int yearOfFoundation;
+
     @SerializedName("universityShortName")
+    @XmlElement(name = "universityShortName")
     private String shortName;
+
     @SerializedName("profile")
+    @XmlElement(name = "profile")
     private StudyProfile mainProfile;
 
     private University(Builder builder) {
