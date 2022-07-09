@@ -2,12 +2,20 @@ package ru.oldjew.models;
 
 import ru.oldjew.enums.StudyProfile;
 
+import jakarta.xml.bind.annotation.*;
+
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Statistics {
 
+    @XmlElement(name = "studyProfile")
     private StudyProfile studyProfile;
+    @XmlElement(name = "avgScore")
     private float avgExamScore;
+    @XmlElement(name = "studentsPerProfile")
     private int studentsPerProfile;
+    @XmlElement(name = "universitiesPerProfile")
     private int universitiesPerProfile;
+    @XmlElement(name = "universityName")
     private String universityName;
 
     public Statistics() {

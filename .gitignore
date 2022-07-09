@@ -3,3 +3,7 @@
 /.idea/
 *.class
 *.iml
+/JSONs/
+/XMLs/
+*.log
+

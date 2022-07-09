@@ -1,18 +1,33 @@
 package ru.oldjew.models;
 
 import com.google.gson.annotations.SerializedName;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
 
+
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Student  {
 
+
     @SerializedName("studentName")
+    @XmlElement(name = "studentName")
     private String fullName;
+
     @SerializedName("universityId")
+    @XmlElement(name = "universityId")
     private String universityId;
+
     @SerializedName("course")
+    @XmlElement(name = "course")
     private int currentCourseNumber;
+
     @SerializedName("avgScore")
+    @XmlElement(name = "avgScore")
     private float avgExamScore;
+
     @SerializedName("phone")
+    @XmlElement(name = "phone")
     private String contactPhone;
 
     private Student(Builder builder) {
